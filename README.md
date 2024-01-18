@@ -37,3 +37,21 @@ These are HashLocationStrategy and PathLocationStrategy.
 
 ### Why Are They Used?
 Since Angular applications are essentially single-page applications, they need to function without sending the URL to the server and without reloading the page on new page requests by users. Therefore, URLs in Angular applications are used locally and only exhibit browser-based behavior. Angular uses location strategies to display this behavior.
+
+## Route Parameter Nedir?
+Web uygulamasinin URL sablonu icerisinde degisken(ler) olusturmamizi ve bu degisken(ler)de veriler tesimamizi saglayan yapilardir. Yani istek yapilan URL ile slesen sayfaya biryandan da ekstradan URL uzerinden veri yasiyabilmemizi saglayan parametrelerdir.
+Verinin tasinacagi konumda ornek parametre tanimi: `{path: "products/:id"}, component: ProductComponent`
+
+### ActivatedRoute nesnesi kullanimi
+O anda aktif olan rotayla ilgili islemler yapmamizi saglayan bir nesnedir. Bu Nesne sayesinde url'deki route parameterlerini ve query string degerlerini elde edebilir ve amacimiz dogrultusunda isleyebiliriz.
+`ActivatedRoute` nesnesi, component'in etkinlestirildigi andaki yonlendirme durumunun bir goruntusu olan `ActivatedRouteSnapshot` nesnesinden olusur. Component icinden ornek parametre erisimi:
+`constructor(private activatedRoute: ActivatedRoute){
+    if(activatedRoute.snapshot.paramMap.has("id"))
+    this.productid = Number(activatedRoute.snapshot.paramMap.get("id"));
+}`
+
+### Observable kullanarak URL parametrelerini okuma
+ActivatedRoute Observable bir davranisla route parametrelerini okumamizi saglayabilmektedir.
+
+### Snapshot mu yoksa Observable mi?
+**Observable davranis gosteren yapilanmalarin kullanilmasi her daim daha saglikli cozum saglayacaktir.** `.subscribe()` metodu ile takibe aldiginiz her parametresel degerde olabilecek degisiklikleri dinamik bir sekilde izlemeniz mumkun olacakatir.
