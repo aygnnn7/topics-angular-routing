@@ -9,7 +9,7 @@ Bu modul ile yapilabilecek seyler:
     - Dinamik olarak view yukeleme.
     - Rotalar uzerinde yetki kontrolu gerceklestirme.
 
-## Angular Router Bilesenleri
+### Angular Router Bilesenleri
 **Router bileseni:** tarayici uzerinden geri/ileri dugmesini aktiflestiren ve component'ler arasinda gezinilmesini saglayan servistir.
 **Route bileseni:** Angular'da component'lerin rotalarini belirlememizi saglayan yapilanmadir. Her bir route; bir path ve o path ile eslesen bir component'ten olusur.
 **Routes bileseni:** Tum route'larin bulundugu bir dizidir.
@@ -18,13 +18,22 @@ Bu modul ile yapilabilecek seyler:
 **Router Link Active:** RouterLink ile birlik kullanilan baska bir direktiftir. RouterLink'in kullanildigi a tag'ine mevcut route durumunda dayali olarak aktif bir CSS class'i verir.
 **RouterState:** Route uzerindeki tum bilgileri ve durumlari iceren bir nesnedir. Uygulamanin hangi rotada oldugunu ve rotanin nasil degistigini takip etmek icin kullanilir.
 
-## Angular Router'in Yapilanmasi
+### Angular Router'in Yapilanmasi
 1. `<base href>` ogesini ayarlama
 2. Component icin rotalar tanimlama
 3. Rotalari kaydederek uygulamaya gecirme
 4. Yonlendirici rotayi/url ayarlama ve herhangi bir HTML nesnesi ile eslestirme
 5. Yeni rotaya uygun component'in yuklenecegi alani belirleme
 
-## Wildcard Route
+### Wildcard Route
 Angular uygulamasinda tanimlanmis olan rotalardan herhangi biriyle eslesmeyen bir URL oldugu taktide Wildcard Route devreye girmektedir.
 Ornek tanim: `{path: "**", component: ErrorComponent}`
+
+## Location Strategies
+Angular Router, uygulamanin farkli sayfalarina olan istekler neticesinde gerekli yonlendirmeyi saglarken bunu belirli konum stratejilerine gore gercekestirir.
+Bunlar HashLocationStrategy ve PathLocationStrategy'dir.
+- HashLocationStrategy `#` sembolunu kullanir. Ozellikle eski taraticilarda, URL degisikliklerinin algilanmasi ve yonlendirmelerin yapilmasi icin kullanilabilir.
+- PathLocationStrategy normal URL'leri kullanarak yonlendirme yapar. Ozellikle modern tarayicilarda tercih edilir. Angular uygulamasaninin **varsayilan** stratejisidir.
+
+### Why are they used?
+Angular uygulamalari ozunde single page application olduklari icin kullanici tarafindan yapilan yeni sayfa isteklerinde url'i sunucuya gondermeksizin ve sayfayi yeniden yuklemeksizin islev gormelidir. Haliyle Angular uygulamarinda URL'ler local olarak kullanilmakta ve sadece tarayici tabanli bir davranis sergilemeektedir. Angular bu davranisi sergileyebilmek icin location strategies'leri kullanmaktadir.
