@@ -1,27 +1,26 @@
-# Proj2
+# Angular - My Notes 2
+## Angular Routing
+Angular mimarisinde bir viewden digerine gidebilmek yahut bir component'ten digerine gecis yapabilmek icin Angular Router modulunden istifade edebiliriz.
+Angular Router bir moduldur.
+Bu modul ile yapilabilecek seyler:
+    - Adres cubuna yazilan URL uzerinden belirli bir componente gitme.
+    - Component'e query string degerlerini gonderme.
+    - Browser'in ileri ve geri dugmelerini aktiflestirme/kullanabilme.
+    - Dinamik olarak view yukeleme.
+    - Rotalar uzerinde yetki kontrolu gerceklestirme.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.10.
+## Angular Router Bilesenleri
+**Router bileseni:** tarayici uzerinden geri/ileri dugmesini aktiflestiren ve component'ler arasinda gezinilmesini saglayan servistir.
+**Route bileseni:** Angular'da component'lerin rotalarini belirlememizi saglayan yapilanmadir. Her bir route; bir path ve o path ile eslesen bir component'ten olusur.
+**Routes bileseni:** Tum route'larin bulundugu bir dizidir.
+**Router Outlet:** Tarayicinin adres cubugundaki URL ile uyumlu olan route'un view'in hangi alaninda gosterilecegini ifade eden yapidir.
+**Router Link:** HTML ogesi olan o tag'ini bir route'a baglayan direktiftir.
+**Router Link Active:** RouterLink ile birlik kullanilan baska bir direktiftir. RouterLink'in kullanildigi a tag'ine mevcut route durumunda dayali olarak aktif bir CSS class'i verir.
+**RouterState:** Route uzerindeki tum bilgileri ve durumlari iceren bir nesnedir. Uygulamanin hangi rotada oldugunu ve rotanin nasil degistigini takip etmek icin kullanilir.
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Angular Router'in Yapilanmasi
+1. `<base href>` ogesini ayarlama
+2. Component icin rotalar tanimlama
+3. Rotalari kaydederek uygulamaya gecirme
+4. Yonlendirici rotayi/url ayarlama ve herhangi bir HTML nesnesi ile eslestirme
+5. Yeni rotaya uygun component'in yuklenecegi alani belirleme
