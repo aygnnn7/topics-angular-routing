@@ -9,6 +9,8 @@ import { ContactComponent } from './components/contact/contact.component';
 import { RouterModule } from '@angular/router';
 import { routes } from './routes/routes';
 import { ErrorComponent } from './components/error/error.component';
+import { ProductsComponent } from './components/products/products.component';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { ErrorComponent } from './components/error/error.component';
     HomeComponent,
     AboutComponent,
     ContactComponent,
-    ErrorComponent
+    ErrorComponent,
+    ProductsComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,

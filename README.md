@@ -55,3 +55,16 @@ ActivatedRoute Observable bir davranisla route parametrelerini okumamizi saglaya
 
 ### Snapshot mu yoksa Observable mi?
 **Observable davranis gosteren yapilanmalarin kullanilmasi her daim daha saglikli cozum saglayacaktir.** `.subscribe()` metodu ile takibe aldiginiz her parametresel degerde olabilecek degisiklikleri dinamik bir sekilde izlemeniz mumkun olacakatir.
+
+## Child Routes/Nested Routes Nedir?
+- Angular mimarisinde component'ler en ustte bir root component'e sahip olunan bir agac/hiyerarsi yapisi takip etmektedirler.
+- Bir uygulamayi selector uzerinden ic ice component'ler olacak sekilde tasarlayabiliriz. Ayrica bu component'lerin her birine rute vererek nested/child routes ozelligi ile de tasarimda bulunabilir ve kullanabiliriz.
+
+### Child Route tanimi
+
+ `
+  path: 'products', component ProductComponent,
+  children: [
+    {[ath: 'detail/:id', component: ProductDetailComponent]}
+  ]
+`

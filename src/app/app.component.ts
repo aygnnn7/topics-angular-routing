@@ -3,10 +3,10 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
-    <a routerLinkActive="activeHome" [routerLink]="['home', homeid]" >Home | </a> 
+    <a routerLinkActive="activeHome" [routerLink]="['home']" >Home | </a> 
     <a routerLinkActive="activeAbout" routerLink="about">About | </a> 
-    <a routerLinkActive="activeContact" [routerLink]="['contact', 'a', 'b', 'c']">Contact</a>
-    
+    <a routerLinkActive="activeContact" [routerLink]="['contact', 'a', 'b', 'c']">Contact | </a>
+    <a routerLink="products">Products </a>
     <hr>
     <router-outlet></router-outlet>
   `,
