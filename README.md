@@ -24,3 +24,7 @@ Bu modul ile yapilabilecek seyler:
 3. Rotalari kaydederek uygulamaya gecirme
 4. Yonlendirici rotayi/url ayarlama ve herhangi bir HTML nesnesi ile eslestirme
 5. Yeni rotaya uygun component'in yuklenecegi alani belirleme
+
+## Wildcard Route
+Angular uygulamasinda tanimlanmis olan rotalardan herhangi biriyle eslesmeyen bir URL oldugu taktide Wildcard Route devreye girmektedir.
+Ornek tanim: `{path: "**", component: ErrorComponent}`
