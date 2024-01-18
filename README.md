@@ -38,33 +38,33 @@ These are HashLocationStrategy and PathLocationStrategy.
 ### Why Are They Used?
 Since Angular applications are essentially single-page applications, they need to function without sending the URL to the server and without reloading the page on new page requests by users. Therefore, URLs in Angular applications are used locally and only exhibit browser-based behavior. Angular uses location strategies to display this behavior.
 
-## Route Parameter Nedir?
-Web uygulamasinin URL sablonu icerisinde degisken(ler) olusturmamizi ve bu degisken(ler)de veriler tesimamizi saglayan yapilardir. Yani istek yapilan URL ile slesen sayfaya biryandan da ekstradan URL uzerinden veri yasiyabilmemizi saglayan parametrelerdir.
-Verinin tasinacagi konumda ornek parametre tanimi: `{path: "products/:id"}, component: ProductComponent`
+## What is a Route Parameter?
+Route parameters are structures that allow us to create variables within the URL template of a web application and carry data in these variables. In other words, they are parameters that enable us to transmit data via the URL to the page matching the requested URL.
+Example parameter definition at the data carrying location: `{path: "products/:id", component: ProductComponent}`
 
-### ActivatedRoute nesnesi kullanimi
-O anda aktif olan rotayla ilgili islemler yapmamizi saglayan bir nesnedir. Bu Nesne sayesinde url'deki route parameterlerini ve query string degerlerini elde edebilir ve amacimiz dogrultusunda isleyebiliriz.
-`ActivatedRoute` nesnesi, component'in etkinlestirildigi andaki yonlendirme durumunun bir goruntusu olan `ActivatedRouteSnapshot` nesnesinden olusur. Component icinden ornek parametre erisimi:
-`constructor(private activatedRoute: ActivatedRoute){
+### Usage of the `ActivatedRoute` Object
+This object allows us to perform operations related to the currently active route. With this object, we can obtain route parameters and query string values from the URL and process them for our purpose.
+The `ActivatedRoute` object consists of an `ActivatedRouteSnapshot`, which is a snapshot of the routing state at the moment the component is activated. Example of accessing parameters within a component:
+```javascript
+constructor(private activatedRoute: ActivatedRoute){
     if(activatedRoute.snapshot.paramMap.has("id"))
-    this.productid = Number(activatedRoute.snapshot.paramMap.get("id"));
-}`
+    this.productId = Number(activatedRoute.snapshot.paramMap.get("id"));
+}
+```
 
-### Observable kullanarak URL parametrelerini okuma
-ActivatedRoute Observable bir davranisla route parametrelerini okumamizi saglayabilmektedir.
+### Reading URL Parameters Using Observable
+`ActivatedRoute` can enable us to read route parameters with Observable behavior.
 
-### Snapshot mu yoksa Observable mi?
-**Observable davranis gosteren yapilanmalarin kullanilmasi her daim daha saglikli cozum saglayacaktir.** `.subscribe()` metodu ile takibe aldiginiz her parametresel degerde olabilecek degisiklikleri dinamik bir sekilde izlemeniz mumkun olacakatir.
+### Snapshot or Observable?
+**Using structures with Observable behavior will always provide a healthier solution.** With the `.subscribe()` method, you can dynamically monitor any changes that might occur in the parameters you are tracking.
+## What are Child Routes/Nested Routes?
+- In Angular architecture, components follow a tree/hierarchy structure with a root component at the top.
+- An application can be designed with components nested within each other using selectors. Additionally, each of these components can be designed and used with the nested/child routes feature by assigning routes to them.
 
-## Child Routes/Nested Routes Nedir?
-- Angular mimarisinde component'ler en ustte bir root component'e sahip olunan bir agac/hiyerarsi yapisi takip etmektedirler.
-- Bir uygulamayi selector uzerinden ic ice component'ler olacak sekilde tasarlayabiliriz. Ayrica bu component'lerin her birine rute vererek nested/child routes ozelligi ile de tasarimda bulunabilir ve kullanabiliriz.
-
-### Child Route tanimi
-
- `
+### Child Route Definition
+```javascript
   path: 'products', component ProductComponent,
   children: [
     {[ath: 'detail/:id', component: ProductDetailComponent]}
   ]
-`
+```
