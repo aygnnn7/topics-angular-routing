@@ -1,39 +1,39 @@
 # Angular - My Notes 2
 ## Angular Routing
-Angular mimarisinde bir viewden digerine gidebilmek yahut bir component'ten digerine gecis yapabilmek icin Angular Router modulunden istifade edebiliriz.
-Angular Router bir moduldur.
-Bu modul ile yapilabilecek seyler:
-    - Adres cubuna yazilan URL uzerinden belirli bir componente gitme.
-    - Component'e query string degerlerini gonderme.
-    - Browser'in ileri ve geri dugmelerini aktiflestirme/kullanabilme.
-    - Dinamik olarak view yukeleme.
-    - Rotalar uzerinde yetki kontrolu gerceklestirme.
+In Angular architecture, to navigate from one view to another or to transition between components, we can use the Angular Router module.
+Angular Router is a module.
+Capabilities of this module include:
+    - Navigating to a specific component based on the URL entered in the address bar.
+    - Sending query string values to a component.
+    - Enabling and using browser's forward and back buttons.
+    - Dynamically loading views.
+    - Performing authorization checks on routes.
 
-### Angular Router Bilesenleri
-**Router bileseni:** tarayici uzerinden geri/ileri dugmesini aktiflestiren ve component'ler arasinda gezinilmesini saglayan servistir.
-**Route bileseni:** Angular'da component'lerin rotalarini belirlememizi saglayan yapilanmadir. Her bir route; bir path ve o path ile eslesen bir component'ten olusur.
-**Routes bileseni:** Tum route'larin bulundugu bir dizidir.
-**Router Outlet:** Tarayicinin adres cubugundaki URL ile uyumlu olan route'un view'in hangi alaninda gosterilecegini ifade eden yapidir.
-**Router Link:** HTML ogesi olan o tag'ini bir route'a baglayan direktiftir.
-**Router Link Active:** RouterLink ile birlik kullanilan baska bir direktiftir. RouterLink'in kullanildigi a tag'ine mevcut route durumunda dayali olarak aktif bir CSS class'i verir.
-**RouterState:** Route uzerindeki tum bilgileri ve durumlari iceren bir nesnedir. Uygulamanin hangi rotada oldugunu ve rotanin nasil degistigini takip etmek icin kullanilir.
+### Angular Router Components
+**Router:** A service that activates the browser's back/forward buttons and enables navigation between components.
+**Route:** The structure in Angular that allows us to define the routes of components. Each route consists of a path and a component that matches that path.
+**Routes:** An array containing all the routes.
+**Router Outlet:** The structure that indicates where in the view the route that matches the URL in the browser's address bar will be displayed.
+**Router Link:** A directive that links an HTML element, typically an `<a>` tag, to a route.
+**Router Link Active:** Another directive used with RouterLink. It gives an active CSS class to the `<a>` tag where RouterLink is used, based on the current route status.
+**RouterState:** An object containing all information and states about a route. Used to track which route the application is on and how the route changes.
 
-### Angular Router'in Yapilanmasi
-1. `<base href>` ogesini ayarlama
-2. Component icin rotalar tanimlama
-3. Rotalari kaydederek uygulamaya gecirme
-4. Yonlendirici rotayi/url ayarlama ve herhangi bir HTML nesnesi ile eslestirme
-5. Yeni rotaya uygun component'in yuklenecegi alani belirleme
+### Angular Router Setup
+1. Setting the `<base href>` element.
+2. Defining routes for components.
+3. Registering routes to implement them in the application.
+4. Setting the redirect route/URL and matching it with any HTML element.
+5. Determining the area where the component for the new route will be loaded.
 
 ### Wildcard Route
-Angular uygulamasinda tanimlanmis olan rotalardan herhangi biriyle eslesmeyen bir URL oldugu taktide Wildcard Route devreye girmektedir.
-Ornek tanim: `{path: "**", component: ErrorComponent}`
+In an Angular application, if a URL does not match any of the defined routes, a Wildcard Route is invoked.
+Example definition: `{path: "**", component: ErrorComponent}`
 
 ## Location Strategies
-Angular Router, uygulamanin farkli sayfalarina olan istekler neticesinde gerekli yonlendirmeyi saglarken bunu belirli konum stratejilerine gore gercekestirir.
-Bunlar HashLocationStrategy ve PathLocationStrategy'dir.
-- HashLocationStrategy `#` sembolunu kullanir. Ozellikle eski taraticilarda, URL degisikliklerinin algilanmasi ve yonlendirmelerin yapilmasi icin kullanilabilir.
-- PathLocationStrategy normal URL'leri kullanarak yonlendirme yapar. Ozellikle modern tarayicilarda tercih edilir. Angular uygulamasaninin **varsayilan** stratejisidir.
+Angular Router, while facilitating the necessary redirections as a result of requests to different pages of the application, does so according to specific location strategies.
+These are HashLocationStrategy and PathLocationStrategy.
+- HashLocationStrategy uses the `#` symbol. It is especially useful in older browsers for detecting URL changes and performing redirections.
+- PathLocationStrategy uses normal URLs for redirection. Preferred especially in modern browsers and is the **default** strategy for Angular applications.
 
-### Why are they used?
-Angular uygulamalari ozunde single page application olduklari icin kullanici tarafindan yapilan yeni sayfa isteklerinde url'i sunucuya gondermeksizin ve sayfayi yeniden yuklemeksizin islev gormelidir. Haliyle Angular uygulamarinda URL'ler local olarak kullanilmakta ve sadece tarayici tabanli bir davranis sergilemeektedir. Angular bu davranisi sergileyebilmek icin location strategies'leri kullanmaktadir.
+### Why Are They Used?
+Since Angular applications are essentially single-page applications, they need to function without sending the URL to the server and without reloading the page on new page requests by users. Therefore, URLs in Angular applications are used locally and only exhibit browser-based behavior. Angular uses location strategies to display this behavior.
