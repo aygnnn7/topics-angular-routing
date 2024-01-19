@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from  '@angular/common/http'
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -11,6 +12,8 @@ import { routes } from './routes/routes';
 import { ErrorComponent } from './components/error/error.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { UserComponent } from './components/user/user.component';
 
 
 @NgModule({
@@ -21,11 +24,15 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
     ContactComponent,
     ErrorComponent,
     ProductsComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    AdminComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    HttpClientModule,
+    AppRoutingModule 
+    
     //RouterModule.forRoot(routes)
   ],
   providers: [],

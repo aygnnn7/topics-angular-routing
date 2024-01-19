@@ -1,15 +1,21 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-products',
   template: `
   Products <br>
-  <a [routerLink]="['product-detail', 1]"> Product 1 Details</a> <br>
-  <a [routerLink]="['product-detail', 2]"> Product 2 Details</a> <br>
-  <a [routerLink]="['product-detail', 3]"> Product 3 Details</a> <br>
+  <ul>
+    <li *ngFor="let photo of photos"><a [routerLink]="[photo.id]">{{photo.url}}</a></li>
+  </ul>
   <router-outlet></router-outlet>
   `
 })
 export class ProductsComponent {
-  
+  constructor(private activatedRoute:ActivatedRoute){}
+
+  photos;
+  ngOnInit():void{
+    this.activatedRoute.data.subscribe((data: any) => this.photos = data["data_photos"]);
+  }
 }

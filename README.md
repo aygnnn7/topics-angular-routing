@@ -57,6 +57,7 @@ constructor(private activatedRoute: ActivatedRoute){
 
 ### Snapshot or Observable?
 **Using structures with Observable behavior will always provide a healthier solution.** With the `.subscribe()` method, you can dynamically monitor any changes that might occur in the parameters you are tracking.
+
 ## What are Child Routes/Nested Routes?
 - In Angular architecture, components follow a tree/hierarchy structure with a root component at the top.
 - An application can be designed with components nested within each other using selectors. Additionally, each of these components can be designed and used with the nested/child routes feature by assigning routes to them.
@@ -68,3 +69,28 @@ constructor(private activatedRoute: ActivatedRoute){
     {[ath: 'detail/:id', component: ProductDetailComponent]}
   ]
 ```
+
+## Angular Guards
+In Angular, Guard structures are mechanisms used to grant or deny access to routes in the application. There are five different Guard structures, which are:
+- CanActivate: Typically used for authorization checks when a user wants to access a target component.
+- CanActivateGuard: While CanActivate is valid for main routes, it will not work for sub-routes. In such cases, CanActivateChild comes into play.
+- Resolve: Often used in situations where the requested component needs data from an endpoint to become functional, allowing for data to be fetched and prepared from the API before redirection to the page.
+- CanLoad: Controls and, if necessary, prevents the loading of modules with lazy loading. Consequently, all elements within the related module are protected, contributing to partial performance improvement.
+- CanDeactivate: Crucially important in pages where the user performs operations, particularly when there might be unsaved data.
+- CanMatch: Allows us to perform multiple conditional checks for the same route.
+Apart from these, with the development of the `CanMatch` guard structure, `CanLoad` has been completely deprecated.
+
+### Execution Order of Guards
+CanMatch => CanActivate => (CanActivateChild) => Resolve => CanDeactivate
+
+### Why Did Functional Router Guard Come About?
+- The transition to the Functional Router Guard structure can be said to stem from a desire to operate in a simplified JavaScript format.
+- With the Functional Router Guard feature, guards now possess the required flexibility and are merely functional in definition, allowing for faster definition and use.
+- With the introduction of the inject function in Angular 14, we are no longer obliged to apply dependency injection through the constructor, and we can request the desired object from the provider within functions.
+- Thus, for a function that will perform a guard operation, we can now meet our needs through a pure function focused directly on the task, without the need for defining a whole class, constructor, etc.
+
+### What are the Advantages of Functional Router Guard?
+- Short, easily readable code with reduced standard
+- Simplified logic
+- Ability to define guards in route definition
+- Improved performance without the extra burden of class creation
