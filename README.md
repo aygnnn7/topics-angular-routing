@@ -95,27 +95,41 @@ CanMatch => CanActivate => (CanActivateChild) => Resolve => CanDeactivate
 - Ability to define guards in route definition
 - Improved performance without the extra burden of class creation
 
-## Route Data Passing nedir?
-Route Data Passing, diger sayfalara arasinda veri aktarma yontemleri gibi verileri URL'den aktarmaktan ziyade `router` modulunun `data` ozelligi araciligiyla tasimaktadir. Haliyle kullanicinin arkaplanda olan bitene daha az erisimi oldugundan dolayi daha guvenli bir yaklasimdir.
+## Route Data Passing
+Route Data Passing is a method of transferring data between pages. Unlike other data transfer methods that use URLs, Route Data Passing utilizes the `data` property of the `router` module. This approach is more secure as it provides less access to the background processes for the user.
 
-Bu sekilde veriyi statik bir sekilde hedef component'e gonderebiliriz:
+We can send data statically to the target component like this:
 ```javascript
 {
   path: "products", component: ProductComponent,
-  data: {value1: "Value1",value2: "Value2"}
+  data: {value1: "Value1", value2: "Value2"}
 }
 ```
-Bu sekilde veriyi dinamik olarak hedef component'e gonderebiliriz:
+We can send data dynamically to the target component like this:
 ```javascript
 <a routerLink="products" [state]="{key3: 'Value3', key4: 'Value4'}" >Products</a>
-
 ```
-Bu sekildede veriyi hedef componenten yakalayabiliriz:
+We can capture the data in the target component like this:
 ```javascript
 constructor(private activatedRoute: ActivatedRoute){
   this._data = this.router.getCurrentNavigation().extras.state;
 }
 _data:any
-
-
 ```
+
+**Note: If you use `getCurrentNavigation`, it can only be accessed from within the constructor.**
+
+## Router Event
+In Angular, Router Events are events used to capture changes at different stages of the Router. These events provide information about when the routing process starts, its current status, and how it ends. The events, in order, are:
+1. NavigationStart - Triggered when a new navigation starts.
+2. RoutesRecognized - Triggered when the routes to be navigated to are recognized.
+3. GuardsCheckStart - Triggered when the current guards of the route being navigated to are checked.
+4. ChildActivationStart - Triggered when the child routes of the route being navigated to are activated.
+5. ActivationStart - Triggered during the activation of the route.
+6. GuardsCheckEnd - Triggered when the checking of guard structures ends.
+7. ResolveStart - Triggered when resolving the data for the page to be navigated to starts.
+8. ActivationEnd - Triggered when the activation of the route is complete.
+9. ResolveEnd - Triggered when the data for the page to be navigated to is resolved.
+10. NavigationEnd - Triggered when the navigation is complete.
+11. NavigationCancel - Triggered if the navigation is canceled.
+12. NavigationError - Triggered if an error occurs during navigation.
