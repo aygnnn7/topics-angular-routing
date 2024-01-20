@@ -94,3 +94,28 @@ CanMatch => CanActivate => (CanActivateChild) => Resolve => CanDeactivate
 - Simplified logic
 - Ability to define guards in route definition
 - Improved performance without the extra burden of class creation
+
+## Route Data Passing nedir?
+Route Data Passing, diger sayfalara arasinda veri aktarma yontemleri gibi verileri URL'den aktarmaktan ziyade `router` modulunun `data` ozelligi araciligiyla tasimaktadir. Haliyle kullanicinin arkaplanda olan bitene daha az erisimi oldugundan dolayi daha guvenli bir yaklasimdir.
+
+Bu sekilde veriyi statik bir sekilde hedef component'e gonderebiliriz:
+```javascript
+{
+  path: "products", component: ProductComponent,
+  data: {value1: "Value1",value2: "Value2"}
+}
+```
+Bu sekilde veriyi dinamik olarak hedef component'e gonderebiliriz:
+```javascript
+<a routerLink="products" [state]="{key3: 'Value3', key4: 'Value4'}" >Products</a>
+
+```
+Bu sekildede veriyi hedef componenten yakalayabiliriz:
+```javascript
+constructor(private activatedRoute: ActivatedRoute){
+  this._data = this.router.getCurrentNavigation().extras.state;
+}
+_data:any
+
+
+```

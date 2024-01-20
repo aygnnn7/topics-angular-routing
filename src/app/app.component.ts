@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
     <a routerLinkActive="activeHome" [routerLink]="['home']" >Home | </a> 
     <a routerLinkActive="activeAbout" routerLink="about">About | </a> 
     <a routerLinkActive="activeContact" [routerLink]="['contact', 'a', 'b', 'c']">Contact | </a>
-    <a routerLinkActive="activeProducts" routerLink="products">Products | </a>
+    <a routerLinkActive="activeProducts" routerLink="products" [state]="{key1: 'Value1', key2: 'Value2'}">Products | </a>
     <a routerLinkActive="activeDashboard" routerLink="dashboard">Dashboard | </a>
     <hr>
     <router-outlet></router-outlet>
